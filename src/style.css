@@ -1,0 +1,22 @@
+html, body{
+        background-color: rgb(237, 241, 245);
+      }
+      .character{
+        display:flex;
+        margin: 10px;
+        box-shadow:0 14px 30px rgba(1,1,1,.1);
+        border-radius: 4px;
+        transition: 1s all;
+      }
+      .character img{
+        height: 150px;
+        margin:4px;
+      }
+      .small{
+        display:flex;
+        flex-wrap: wrap;
+      }
+      .small .character{
+        flex-direction: column;
+        width:108px;
+      }
