@@ -24,7 +24,9 @@ if (
 //ser user and get Waifus
 
 //fake inventory generation
-fetch("flowers.jpg").then(function (response) {
+fetch("https://waifubot.kar.wtf/waifubot/268494575780233216").then(function (
+	response
+) {
 	console.log(response);
 	return response.blob();
 
