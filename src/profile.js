@@ -24,9 +24,12 @@ if (
 //ser user and get Waifus
 
 //fake inventory generation
-fetch("https://waifubot.kar.wtf/waifubot/268494575780233216").then(function (
-	response
-) {
+fetch("example.json", {
+	headers: {
+		"Access-Control-Allow-Origin": "waifubot.kar.wtf",
+		"Content-Type": "application/json;charset=utf-8",
+	},
+}).then(function (response) {
 	console.log(response);
 	return response.blob();
 
