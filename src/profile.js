@@ -24,30 +24,24 @@ if (
 //ser user and get Waifus
 
 //fake inventory generation
-var inventory = [];
+fetch("flowers.jpg").then(function (response) {
+	console.log(response);
+	return response.blob();
 
-for (let i = 0; i < 1001; i++) {
-	inventory.push({
-		id: 1,
-		name: "Spike Spiegel",
-		image:
-			"https://images-ext-1.discordapp.net/external/CyPhtEnShv6UVITwTeidxS3e3N8CGCzJm4FWKYzSIfg/https/s4.anilist.co/file/anilistcdn/character/large/b1-ChxaldmieFlQ.png",
-	});
-}
-
-//fill "current" select with options
-for (var i = 0; i * amount < inventory.length; i++) {
-	let option = document.createElement("option");
-	let text =
-		i * amount +
-		"-" +
-		((i + 1) * amount > inventory.length ? inventory.length : (i + 1) * amount);
-	option.setAttribute("value", text);
-	option.innerText = text;
-	document.getElementById("current").appendChild(option);
-}
-
-document.getElementById("current");
+	//fill "current" select with options
+	for (var i = 0; i * amount < inventory.length; i++) {
+		let option = document.createElement("option");
+		let text =
+			i * amount +
+			"-" +
+			((i + 1) * amount > inventory.length
+				? inventory.length
+				: (i + 1) * amount);
+		option.setAttribute("value", text);
+		option.innerText = text;
+		document.getElementById("current").appendChild(option);
+	}
+});
 
 function setAmount(amount) {
 	let selected = Array.from(document.getElementById("amount")).find(
