@@ -29,24 +29,29 @@ fetch("example.json", {
 		"Access-Control-Allow-Origin": "waifubot.kar.wtf",
 		"Content-Type": "application/json;charset=utf-8",
 	},
-}).then(function (response) {
-	console.log(response);
-	return response.blob();
+})
+	.then(function (response) {
+		console.log(response);
+		console.log(response.body);
+		return response.blob();
 
-	//fill "current" select with options
-	for (var i = 0; i * amount < inventory.length; i++) {
-		let option = document.createElement("option");
-		let text =
-			i * amount +
-			"-" +
-			((i + 1) * amount > inventory.length
-				? inventory.length
-				: (i + 1) * amount);
-		option.setAttribute("value", text);
-		option.innerText = text;
-		document.getElementById("current").appendChild(option);
-	}
-});
+		//fill "current" select with options
+		for (var i = 0; i * amount < inventory.length; i++) {
+			let option = document.createElement("option");
+			let text =
+				i * amount +
+				"-" +
+				((i + 1) * amount > inventory.length
+					? inventory.length
+					: (i + 1) * amount);
+			option.setAttribute("value", text);
+			option.innerText = text;
+			document.getElementById("current").appendChild(option);
+		}
+	})
+	.then(function (data) {
+		console.log(data);
+	});
 
 function setAmount(amount) {
 	let selected = Array.from(document.getElementById("amount")).find(
