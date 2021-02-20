@@ -32,11 +32,11 @@ fetch("example.json", {
 })
 	.then(function (response) {
 		console.log(response);
-		console.log(JSON.from(response.body));
+		console.log(JSON.parse(response.body));
 		return response.blob();
 	})
 	.then(function (data) {
-		console.log(JSON.from(data));
+		console.log(JSON.parse(data));
 	});
 
 //fill "current" select with options
