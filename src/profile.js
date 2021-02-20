@@ -32,26 +32,24 @@ fetch("example.json", {
 })
 	.then(function (response) {
 		console.log(response);
-		console.log(response.body);
+		console.log(JSON.from(response.body));
 		return response.blob();
-
-		//fill "current" select with options
-		for (var i = 0; i * amount < inventory.length; i++) {
-			let option = document.createElement("option");
-			let text =
-				i * amount +
-				"-" +
-				((i + 1) * amount > inventory.length
-					? inventory.length
-					: (i + 1) * amount);
-			option.setAttribute("value", text);
-			option.innerText = text;
-			document.getElementById("current").appendChild(option);
-		}
 	})
 	.then(function (data) {
-		console.log(data);
+		console.log(JSON.from(data));
 	});
+
+//fill "current" select with options
+for (var i = 0; i * amount < inventory.length; i++) {
+	let option = document.createElement("option");
+	let text =
+		i * amount +
+		"-" +
+		((i + 1) * amount > inventory.length ? inventory.length : (i + 1) * amount);
+	option.setAttribute("value", text);
+	option.innerText = text;
+	document.getElementById("current").appendChild(option);
+}
 
 function setAmount(amount) {
 	let selected = Array.from(document.getElementById("amount")).find(
