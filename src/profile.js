@@ -32,7 +32,7 @@ fetch("example.json", {
 })
 	.then(function (response) {
 		console.log(response);
-		console.log(JSON.parse(response.body));
+		//console.log(JSON.parse(response.body));
 		return response.blob();
 	})
 	.then(function (data) {
