@@ -29,8 +29,8 @@ if (parameters.theme == "black") {
 } else if (parameters.theme == "white") {
 	setTheme(1);
 }
-//fetch user and get Waifus
 
+//fetch user and get Waifus
 fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 	headers: {
 		"Content-Type": "text/plain",
@@ -47,7 +47,8 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 			filteredInventory = filter(inventory, parameters.filter)
 			searchInput.value = parameters.filter
 		} else {
-			filteredInventory = inventory;
+			//shallow copy
+			filteredInventory = [...inventory];
 		}
 
 		//fill "current" select with options
@@ -63,6 +64,7 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 		previousElement.disabled = true;
 		searchInput.disabled = false;
 		searchButton.disabled = false;
+		sortElement.disabled = false;
 	});
 
 function emptyNavMenu() {
@@ -130,5 +132,16 @@ function filter(list, input) {
 		return list.filter(e => e.ID.toString().startsWith(input))
 	} else {
 		return list.filter(e => e.Name.toLowerCase().includes(input.toLowerCase()))
+	}
+}
+function sort(list, input) {
+	if (input == "ID") {
+		list.sort((a, b) => {
+			return a.ID - b.ID
+		})
+	} else if (input == "Name") {
+		list.sort((a, b) => {
+			return a.Name > b.Name
+		})
 	}
 }

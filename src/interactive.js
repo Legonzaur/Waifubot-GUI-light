@@ -1,17 +1,27 @@
 
 let amountElement = document.getElementById("amount");
 let currentElement = document.getElementById("current");
+let sortElement = document.getElementById("sort");
 let previousElement = document.getElementById("previous");
 let nextElement = document.getElementById("next");
 let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
+
 amountElement.addEventListener("change", (e) => {
 	amount = Number(amountElement.value);
 	reloadAll()
 });
 
+sortElement.addEventListener("change", (e) => {
+	if (sortElement.value == "Date") {
+		filteredInventory = filter(inventory, searchInput.value)
+	} else {
+		sort(filteredInventory, sortElement.value)
+	}
+	reloadAll()
+});
 
-currentElement.addEventListener("click", (e) => {
+currentElement.addEventListener("change", (e) => {
 	current = Number(currentElement.value);
 	emptyList();
 	displayList(filteredInventory, amount, current);

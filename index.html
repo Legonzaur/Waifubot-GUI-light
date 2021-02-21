@@ -15,14 +15,19 @@
     <div>
       <input type=text id="searchInput" disabled></input>
       <button id="searchButton" disabled>Search</button>
-      <button onclick="displayMode(1)" disabled>List</button>
-      <button onclick="displayMode(0)" disabled>Grid</button>
+      Sort <select id="sort" disabled>
+        <option value="Date">Date</option>
+        <option value="ID">ID</option>
+        <option value="Name">Name</option>
+      </select>
       Amount <select id="amount" disabled>
         <option value="50">50</option>
         <option value="100">100</option>
         <option value="200">250</option>
         <option value="500">500</option>
       </select>
+      <button onclick="displayMode(1)" disabled>List</button>
+      <button onclick="displayMode(0)" disabled>Grid</button>
     </div>
     <div>
       <button id="previous" disabled>Previous</button>
