@@ -8,6 +8,8 @@ URL parameters:
 
 **user** : `any discord user ID`
 
+**compare** : `any discord user ID`
+
 **display** : `grid` or `list`
 
 default value : `grid`

@@ -21,6 +21,9 @@ html.black, body.black{
 .black .character a{
 	color: #eee;
 }
+.character.owned{
+	background: rgb(76,76,76);
+}
 .character img {
 	height: 150px;
 	margin: 4px;

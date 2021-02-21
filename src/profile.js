@@ -5,6 +5,7 @@ var amount = 50;
 var current = 0;
 var inventory = [];
 var filteredInventory = [];
+var compareInventory = [];
 //display parameter
 //options : grid or list
 if (parameters.display == "list") {
@@ -30,16 +31,15 @@ if (parameters.theme == "black") {
 }
 
 //fetch user and get Waifus
-fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
-	headers: {
-		"Content-Type": "text/plain",
-	},
-	cache: "reload",
-})
-	.then(function (response) {
-		return response.json();
-	})
-	.then(function (user) {
+(async () => {
+
+	if (parameters.compare) {
+		await fetchUserData(parameters.compare).then(function (user) {
+			compareInventory = user.Waifus;
+		})
+	}
+
+	fetchUserData(parameters.user).then(function (user) {
 		inventory = user.Waifus;
 
 		//filter parameter
@@ -74,7 +74,20 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 		searchButton.disabled = false;
 		sortElement.disabled = false;
 	});
+})()
 
+async function fetchUserData(id) {
+	console.log("https://waifubot.kar.wtf/user/" + id)
+	return fetch("https://waifubot.kar.wtf/user/" + id, {
+		headers: {
+			"Content-Type": "text/plain",
+		},
+		cache: "reload",
+	})
+		.then(function (response) {
+			return response.json();
+		})
+}
 function emptyNavMenu() {
 	document.getElementById("current").innerHTML = "";
 }
@@ -113,7 +126,11 @@ function emptyList() {
 	list.innerHTML = "";
 }
 function displayCharacter({ ID, Name, Image }) {
-	list.innerHTML += `<div class="character">
+	let additionnalClass = "";
+	if (findCaracterInList({ ID, Name, Image }, compareInventory)) {
+		additionnalClass = "owned"
+	}
+	list.innerHTML += `<div class="character ${additionnalClass}">
 		  <a href="https://anilist.co/character/${ID}"><img src="${Image}"></a>
           <a href="https://anilist.co/character/${ID}">${ID}</a>
 		  <p>${Name}</p>
@@ -152,4 +169,7 @@ function sort(list, input) {
 			return a.Name > b.Name
 		})
 	}
+}
+function findCaracterInList({ ID, Name, Image }, list) {
+	return list.find(e => e.ID == ID)
 }
