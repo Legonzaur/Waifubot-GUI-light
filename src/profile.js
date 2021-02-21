@@ -43,6 +43,8 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 	.then(function (user) {
 		inventory = user.Waifus;
 
+		//filter parameter
+		//options : any string or positive int
 		if (parameters.filter) {
 			filteredInventory = filter(inventory, parameters.filter)
 			searchInput.value = parameters.filter
@@ -50,6 +52,16 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 			//shallow copy
 			filteredInventory = [...inventory];
 		}
+
+		//sort parameter
+		//options : any or ID or Name
+		if (parameters.sort == "ID" || parameters.sort == "Name") {
+			sort(filteredInventory, parameters.sort)
+			sortElement.value = parameters.sort;
+		}
+
+		//sort parameter
+		//options : Date, ID or Name
 
 		//fill "current" select with options
 		setCustomAmount(amount);

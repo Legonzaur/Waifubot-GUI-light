@@ -69,6 +69,9 @@ nextElement.addEventListener("click", (e) => {
 searchButton.addEventListener("click", (e) => {
 	if (searchButton.disabled) return;
 	filteredInventory = filter(inventory, searchInput.value)
+	if (sortElement.value != "Date") {
+		sort(filteredInventory, sortElement.value)
+	}
 	reloadAll()
 });
 

@@ -20,6 +20,10 @@ default value : `black`
 
 default value : `50`
 
-**filter** : `any positive number` or `any string`
+**filter** : `any positive int` or `any string`
+
+**sort** : `Date` or `ID` or `Name`
+
+default value : `Date`
 
 Example : `https://legonzaur.github.io/Waifubot-GUI-light/?user=206794847581896705&amount=21&display=grid&theme=white&filter=ki`
