@@ -5,6 +5,7 @@ const parameters = getUrlVars();
 var amount = 50;
 var current = 0;
 var inventory = [];
+var filteredInventory = [];
 //display parameter
 //options : grid or list
 if (parameters.display == "list") {
@@ -41,12 +42,21 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 	})
 	.then(function (user) {
 		inventory = user.Waifus;
+		filteredInventory = inventory;
 
 		//fill "current" select with options
 		setCustomAmount(amount);
-		populateNavMenu(inventory, amount);
-		displayList(inventory, amount, current);
-		initInteractive();
+		populateNavMenu(filteredInventory, amount);
+		displayList(filteredInventory, amount, current);
+		if (filteredInventory.length > current + amount) {
+
+			nextElement.disabled = false;
+		}
+		amountElement.disabled = false;
+		currentElement.disabled = false;
+		previousElement.disabled = true;
+		searchInput.disabled = false;
+		searchButton.disabled = false;
 	});
 
 function emptyNavMenu() {
@@ -108,4 +118,11 @@ function getUrlVars() {
 		}
 	);
 	return vars;
+}
+function filter(list, input) {
+	if (!isNaN(Number(input))) {
+		return list.filter(e => e.ID.toString().startsWith(input))
+	} else {
+		return list.filter(e => e.Name.toLowerCase().includes(input.toLowerCase()))
+	}
 }
