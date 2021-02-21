@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Waifubot GUI</title>
-    <link rel=”stylesheet” type=”text/css” href=src/style.css” />
+    <link rel=stylesheet href="src/style.css" />
   </head>
   <body>
     <header>
@@ -15,7 +15,7 @@
         <button id="searchButton" disabled>Search</button>
         <button onclick="displayMode(1)">List</button>
         <button onclick="displayMode(0)">Grid</button>
-        Amount <select id="amount"> 
+        Amount <select id="amount" disabled> 
           <option value="50">50</option>
           <option value="100">100</option>
           <option value="200">250</option>
@@ -23,17 +23,16 @@
          </select>
       </div>
       <div>
-        <button onclick="" disabled>Previous</button>
-        <select id="current"></select>
-        <button onclick="" disabled>Next</button>
+        <button id="previous" disabled>Previous</button>
+        <select id="current" disabled></select>
+        <button id="next" disabled>Next</button>
       </div>
       
       <div id="list">
       </div>
-      <p id="loadingIndicator">Chargement...</p>
-      <button id="loadMore">Forcer le chargement</button>
     </main>
     <footer>Created by Legonzaur#2100, Karitham#0577</footer>
     <script src="src/profile.js"></script>
+    <script src="src/interactive.js"></script>
   </body>
 </html>
