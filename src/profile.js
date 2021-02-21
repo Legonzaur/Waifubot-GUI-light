@@ -61,8 +61,9 @@ function populateNavMenu(list, amount) {
 }
 function displayList(list, amount, from) {
 	for (var i = 0; i < amount; i++) {
-		if (i + from < list.length - 1) {
+		if (i + from < list.length) {
 			displayCharacter(list[i + from]);
+			console.log(i + from);
 		}
 	}
 }

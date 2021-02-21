@@ -1,8 +1,12 @@
 # Waifubot-GUI-light
+
 Client-sided GUI for WaifuBot. Fetches data from kar's API
 
 # Usage
+
 URL parameters:
+
+**user** : `any discord user ID`
 
 **display** : `grid` or `list`
 
