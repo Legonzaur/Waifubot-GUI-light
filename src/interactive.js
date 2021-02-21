@@ -62,6 +62,11 @@ searchButton.addEventListener("click", (e) => {
 	reloadAll()
 });
 
+searchInput.addEventListener("keyup", e => {
+	if (e.key == "Enter") {
+		searchButton.click()
+	}
+})
 function reloadAll() {
 	emptyList();
 	emptyNavMenu();
