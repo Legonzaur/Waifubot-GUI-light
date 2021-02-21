@@ -1,6 +1,5 @@
 const main = document.querySelector("body main");
 const list = document.getElementById("list");
-const loadingIndicator = document.getElementById("loadingIndicator");
 const parameters = getUrlVars();
 var amount = 50;
 var current = 0;
