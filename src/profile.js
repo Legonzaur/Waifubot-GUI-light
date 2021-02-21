@@ -59,9 +59,6 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 			sortElement.value = parameters.sort;
 		}
 
-		//sort parameter
-		//options : Date, ID or Name
-
 		//fill "current" select with options
 		setCustomAmount(amount);
 		populateNavMenu(filteredInventory, amount);
