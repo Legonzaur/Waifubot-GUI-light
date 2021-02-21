@@ -50,8 +50,6 @@ function initInteractive() {
 			previousElement.disabled = true;
 		}
 	});
-
-	console.log(inventory.length);
 	if (inventory.length > current + amount) {
 		nextElement.disabled = false;
 	}

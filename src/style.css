@@ -1,13 +1,25 @@
-html,
-body {
+html {
 	background-color: rgb(237, 241, 245);
+}
+
+html.black, body.black{
+	background-color: black;
+    color: #eee;
 }
 .character {
 	display: flex;
 	margin: 10px;
 	box-shadow: 0 14px 30px rgba(1, 1, 1, 0.1);
 	border-radius: 4px;
-	transition: 1s all;
+	padding: 4px;
+	vertical-align: middle;
+    text-align: center;
+}
+.black .character{
+	background-color: #151515;
+}
+.black .character a{
+	color: #eee;
 }
 .character img {
 	height: 150px;

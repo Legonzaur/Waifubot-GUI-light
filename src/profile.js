@@ -21,7 +21,13 @@ if (
 ) {
 	amount = Number(parameters.amount);
 }
-
+//theme parameter
+//options : black or white
+if (parameters.theme == "black") {
+	setTheme(0);
+} else if (parameters.theme == "white") {
+	setTheme(1);
+}
 //fetch user and get Waifus
 
 fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
@@ -34,7 +40,6 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 		return response.json();
 	})
 	.then(function (user) {
-		console.log(user);
 		inventory = user.Waifus;
 
 		//fill "current" select with options
@@ -63,7 +68,6 @@ function displayList(list, amount, from) {
 	for (var i = 0; i < amount; i++) {
 		if (i + from < list.length) {
 			displayCharacter(list[i + from]);
-			console.log(i + from);
 		}
 	}
 }
@@ -91,6 +95,9 @@ function displayCharacter({ ID, Name, Image }) {
 }
 function displayMode(mode) {
 	mode == 1 ? (list.className = "") : (list.className = "small");
+}
+function setTheme(mode) {
+	mode == 1 ? (document.documentElement.className = "") : (document.documentElement.className = "black")
 }
 function getUrlVars() {
 	var vars = {};
