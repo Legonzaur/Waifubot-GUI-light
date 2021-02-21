@@ -16,7 +16,7 @@ default value : `grid`
 
 default value : `black`
 
-**amount** : `any positive number`
+**amount** : `any positive int`
 
 default value : `50`
 
