@@ -33,6 +33,9 @@ html.black, body.black{
 	flex-direction: column;
 	width: 108px;
 }
-img {
+.small .character img{
+	width: 100px;
+}
+img, a {
 	object-fit: cover;
 }
