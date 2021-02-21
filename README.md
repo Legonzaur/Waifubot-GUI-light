@@ -26,4 +26,4 @@ how many characters are shown on one page
 
 default value : `50`
 
-Example : `https://legonzaur.github.io/Waifubot-GUI-light/?amount=21&display=grid&theme=white`
+Example : `https://legonzaur.github.io/Waifubot-GUI-light/?user=206794847581896705&amount=21&display=grid&theme=white`
