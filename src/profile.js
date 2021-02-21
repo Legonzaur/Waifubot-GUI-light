@@ -45,6 +45,7 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 
 		if (parameters.filter) {
 			filteredInventory = filter(inventory, parameters.filter)
+			searchInput.value = parameters.filter
 		} else {
 			filteredInventory = inventory;
 		}
