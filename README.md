@@ -26,4 +26,4 @@ default value : `50`
 
 default value : `Date`
 
-Example : `https://legonzaur.github.io/Waifubot-GUI-light/?user=206794847581896705&amount=21&display=grid&theme=white&filter=ki`
+Example : `https://legonzaur.github.io/Waifubot-GUI-light/?user=206794847581896705&amount=21&display=grid&theme=white&filter=ki&sort=ID`
