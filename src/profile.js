@@ -88,7 +88,7 @@ function emptyList() {
 }
 function displayCharacter({ ID, Name, Image }) {
 	list.innerHTML += `<div class="character">
-          <img src="${Image}">
+		  <a href="https://anilist.co/character/${ID}"><img src="${Image}"></a>
           <a href="https://anilist.co/character/${ID}">${ID}</a>
 		  <p>${Name}</p>
         </div>`;
