@@ -42,7 +42,12 @@ fetch("https://waifubot.kar.wtf/user/" + parameters.user, {
 	})
 	.then(function (user) {
 		inventory = user.Waifus;
-		filteredInventory = inventory;
+
+		if (parameters.filter) {
+			filteredInventory = filter(inventory, parameters.filter)
+		} else {
+			filteredInventory = inventory;
+		}
 
 		//fill "current" select with options
 		setCustomAmount(amount);
