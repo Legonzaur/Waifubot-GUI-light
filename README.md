@@ -12,8 +12,18 @@ URL parameters:
 
 controls the way characaters are shown
 
+default value : `grid`
+
+**theme** : `black` or `white`
+
+changes the theme
+
+default value : `black`
+
 **amount** : `any positive number`
 
 how many characters are shown on one page
 
-Example : `https://legonzaur.github.io/Waifubot-GUI-light/?amount=21&display=grid`
+default value : `50`
+
+Example : `https://legonzaur.github.io/Waifubot-GUI-light/?amount=21&display=grid&theme=white`
