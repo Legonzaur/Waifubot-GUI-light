@@ -163,7 +163,6 @@ function sort(list, input) {
 	if (input == "ID") {
 		list.sort((a, b) => a.ID - b.ID)
 	} else if (input == "Name") {
-		console.log("name")
 		list.sort((a, b) => a.Name.localeCompare(b.Name, 'fr', { ignorePunctuation: true }))
 	}
 }
