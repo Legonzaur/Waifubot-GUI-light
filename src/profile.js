@@ -161,13 +161,10 @@ function filter(list, input) {
 }
 function sort(list, input) {
 	if (input == "ID") {
-		list.sort((a, b) => {
-			return a.ID - b.ID
-		})
+		list.sort((a, b) => a.ID - b.ID)
 	} else if (input == "Name") {
-		list.sort((a, b) => {
-			return a.Name > b.Name
-		})
+		console.log("name")
+		list.sort((a, b) => a.Name.localeCompare(b.Name, 'fr', { ignorePunctuation: true }))
 	}
 }
 function findCaracterInList({ ID, Name, Image }, list) {
