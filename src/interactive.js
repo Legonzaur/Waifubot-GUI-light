@@ -6,9 +6,12 @@ let previousElement = document.getElementById("previous");
 let nextElement = document.getElementById("next");
 let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
+const url = new URL(window.location);
 
 amountElement.addEventListener("change", (e) => {
 	amount = Number(amountElement.value);
+	url.searchParams.set('amount', amountElement.value);
+	window.history.pushState({}, '', url);
 	reloadAll()
 });
 
@@ -18,6 +21,8 @@ sortElement.addEventListener("change", (e) => {
 	} else {
 		sort(filteredInventory, sortElement.value)
 	}
+	url.searchParams.set('sort', sortElement.value);
+	window.history.pushState({}, '', url);
 	reloadAll()
 });
 
@@ -72,6 +77,8 @@ searchButton.addEventListener("click", (e) => {
 	if (sortElement.value != "Date") {
 		sort(filteredInventory, sortElement.value)
 	}
+	url.searchParams.set('filter', searchInput.value);
+	window.history.pushState({}, '', url);
 	reloadAll()
 });
 
@@ -80,6 +87,34 @@ searchInput.addEventListener("keyup", e => {
 		searchButton.click()
 	}
 })
+
+window.addEventListener("popstate", e => {
+	let targetParams = new URLSearchParams(e.target.location.search.substring(1))
+
+	//filter parameter
+	//options : any string or positive int
+	if (targetParams.get("filter")) {
+		filteredInventory = filter(inventory, targetParams.get("filter"))
+		searchInput.value = targetParams.get("filter")
+	} else {
+		//shallow copy
+		filteredInventory = [...inventory];
+		searchInput.value = "";
+	}
+
+	//sort parameter
+	//options : any or ID or Name
+	if (targetParams.get("sort") == "ID" || targetParams.get("sort") == "Name") {
+		sort(filteredInventory, targetParams.get("sort"))
+		sortElement.value = targetParams.get("sort");
+	}
+
+	//amount parameter
+	amount = Number(targetParams.get("amount"))
+	setCustomAmount(amount);
+
+	reloadAll();
+}, false)
 function reloadAll() {
 	emptyList();
 	emptyNavMenu();
