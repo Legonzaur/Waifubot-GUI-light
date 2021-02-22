@@ -132,7 +132,7 @@ function displayCharacter({ ID, Name, Image }) {
 	}
 	list.innerHTML += `<div class="character ${additionnalClass}">
 		  <a href="https://anilist.co/character/${ID}"><img src="${Image}"></a>
-          <a href="https://anilist.co/character/${ID}">${ID}</a>
+          <p>${ID}</p>
 		  <p>${Name}</p>
         </div>`;
 }
