@@ -4,9 +4,10 @@ html {
 }
 
 body{
-	 text-align: center;
+	text-align: center;
 	margin:40px auto;
-	max-width:70%;
+	max-width: 1150px;
+	min-width: 70%;
 	line-height:1.6;
 	font-size:1.125rem;
 	padding:0 10px;
@@ -23,6 +24,7 @@ html.gray, body.gray{
 }
 .character {
 	display: flex;
+	flex-wrap: wrap;
 	margin: 10px;
 	box-shadow: 0 14px 30px rgba(1, 1, 1, 0.1);
 	border-radius: 4px;
@@ -30,6 +32,32 @@ html.gray, body.gray{
 	vertical-align: middle;
     text-align: center;
 	overflow-wrap: break-word;
+}
+.character .ownerList {
+	position:absolute;
+	align-self: flex-end;
+	display:flex;
+	flex-wrap: wrap;
+	width: 108px;
+	flex-direction: row-reverse;
+}
+.character .owner{
+	position:relative;
+	border-radius: 25px;
+	width:25px;
+	height: 25px;
+	margin: 2.5px;
+	border: 7.5px solid black;
+}
+div[data-index='0']{
+	background:blue;
+}
+
+div[data-index='1']{
+	background:red;
+}
+div[data-index='2']{
+	background:yellow;
 }
 .black .character{
 	background-color: #151515;
@@ -67,4 +95,9 @@ html.gray, body.gray{
 }
 img, a {
 	object-fit: cover;
+}
+
+#compareWith{
+	position:fixed;
+	left:0
 }

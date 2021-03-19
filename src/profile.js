@@ -5,6 +5,7 @@ const searchInput = document.getElementById("searchInput");
 const parameters = new URLSearchParams(window.location.search.substring(1))
 var amount = Number(parameters.get("amount")) || 50;
 var user = {};
+var compareUsers = []
 var inventoryToShow = [];
 var filteredInventory = [];
 
@@ -12,11 +13,32 @@ var filteredInventory = [];
 //options : black, white or gray
 setTheme(parameters.get("theme") || "black")
 
+//fetch all necessary JSONS
+const userDatas = [fetchUserData(parameters.get("user"))]
 
-fetchUserData(parameters.get("user")).then(e => {
-	user = e;
-	console.log(parameters.get("sort") != "Date")
-	filteredInventory = filter(e.Waifus, parameters.get("filter") || "")
+if (parameters.get("compare")?.split(",")) {
+	parameters.get("compare")?.split(",").forEach(e => {
+		userDatas.push(fetchUserData(e));
+	})
+}
+
+Promise.all(userDatas).then(e => {
+	user = e.shift();
+	console.log(user)
+	user.ID = parameters.get("user");
+
+	let compareWith = document.getElementById("compareWith");
+	e.forEach((compareUser, index) => {
+		compareUser.ID = parameters.get("compare").split(",")[index];
+		compareUsers.push(compareUser)
+		let userID = document.createElement("div");
+		userID.dataset.index = index;
+		userID.innerText = compareUser.ID;
+		compareWith.appendChild(userID)
+	})
+	//this shit is in case the user adds a filter query argument
+	filteredInventory = filter(user.Waifus, parameters.get("filter") || "")
+	//this shit is in case the user adds a sort query argument
 	if (parameters.get("sort") != "Date") sort(filteredInventory, parameters.get("sort"));
 	inventoryToShow = [...filteredInventory];
 	while (document.body.scrollHeight < window.innerHeight && inventoryToShow.length != 0) {
@@ -42,18 +64,24 @@ function batchAddCards(waifuList) {
 		waifuID.innerText = waifu.ID;
 		waifuName.innerText = waifu.Name;
 		card.className = "character small";
+
+		let owners = document.createElement("div")
+		owners.className = "ownerList"
+		compare(waifu, compareUsers).forEach((user) => {
+			let owner = document.createElement("div");
+			owner.classList = "owner";
+			owner.dataset.index = compareUsers.indexOf(user);
+			owners.appendChild(owner);
+		})
+		card.appendChild(owners);
+
 		cards.appendChild(card);
 	});
 	list.appendChild(cards);
 }
 
 function fetchUserData(id) {
-	return fetch("https://waifubot.kar.wtf/user/" + id, {
-		headers: {
-			"Content-Type": "text/plain",
-		},
-		cache: "reload",
-	})
+	return fetch("https://waifubot.kar.wtf/user/" + id, {})
 		.then(function (response) {
 			return response.json();
 		})
@@ -82,4 +110,6 @@ function sort(list, input) {
 	}
 }
 
-
+function compare({ ID }, userList) {
+	return userList.filter(user => user.Waifus.filter(waifu => waifu.ID == ID).length > 0);
+}
