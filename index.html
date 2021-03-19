@@ -4,43 +4,35 @@
 <head>
   <meta charset="utf-8">
   <title>Waifubot GUI</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel=stylesheet href="src/style.css" />
   <link rel="icon" type="image/ico" href="favicon.ico">
 </head>
 
 <body>
   <header>
-    Waifubot GUI
+    <h1>Waifubot GUI</h1>
   </header>
   <main>
     <div>
       <input type=text id="searchInput" placeholder="any uint or string" disabled></input>
       <button id="searchButton" disabled>Search</button>
-      Sort <select id="sort" disabled>
-        <option value="Date">Date</option>
+    </div>
+    <div>
+      Sort
+      <select id="sort" disabled>
+        <option value="Date" selected>Date</option>
         <option value="ID">ID</option>
         <option value="Name">Name</option>
       </select>
-      Amount <select id="amount" disabled>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        <option value="250">250</option>
-        <option value="500">500</option>
-      </select>
-      <button onclick="displayMode(1)" disabled>List</button>
-      <button onclick="displayMode(0)" disabled>Grid</button>
     </div>
-    <div>
-      <button id="previous" disabled>Previous</button>
-      <select id="current" disabled></select>
-      <button id="next" disabled>Next</button>
+
     </div>
 
     <div id="list" class="small">
     </div>
-    <button onclick="document.getElementById('previous').click()">Previous</button>
-    <select disabled></select>
-    <button onclick="document.getElementById('next').click()">Next</button>
+    <div id="scrollLimit"></div>
   </main>
   <footer>Created by Legonzaur#2100, Karitham#0577</footer>
   <script src="src/profile.js"></script>

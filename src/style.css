@@ -1,9 +1,24 @@
 html {
 	background-color: rgb(237, 241, 245);
+	font-family: 'Montserrat', sans-serif;
 }
+
+body{
+	 text-align: center;
+	margin:40px auto;
+	max-width:70%;
+	line-height:1.6;
+	font-size:1.125rem;
+	padding:0 10px;
+  }
 
 html.black, body.black{
 	background-color: black;
+    color: #eee;
+}
+
+html.gray, body.gray{
+	background-color: #363636;
     color: #eee;
 }
 .character {
@@ -14,11 +29,19 @@ html.black, body.black{
 	padding: 4px;
 	vertical-align: middle;
     text-align: center;
+	overflow-wrap: break-word;
 }
 .black .character{
 	background-color: #151515;
 }
 .black .character a{
+	color: #eee;
+}
+
+.gray .character{
+	background-color: black;
+}
+.gray .character a{
 	color: #eee;
 }
 .character.owned{
@@ -27,6 +50,9 @@ html.black, body.black{
 .character img {
 	height: 150px;
 	margin: 4px;
+}
+.character p {
+	max-width: 108px;
 }
 .small {
 	display: flex;
