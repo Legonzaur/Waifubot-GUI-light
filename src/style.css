@@ -1,24 +1,75 @@
 html {
 	background-color: rgb(237, 241, 245);
+	font-family: 'Montserrat', sans-serif;
 }
+
+body{
+	text-align: center;
+	margin:40px auto;
+	max-width: 1150px;
+	min-width: 70%;
+	line-height:1.6;
+	font-size:1.125rem;
+	padding:0 10px;
+  }
 
 html.black, body.black{
 	background-color: black;
     color: #eee;
 }
+
+html.gray, body.gray{
+	background-color: #363636;
+    color: #eee;
+}
 .character {
 	display: flex;
+	flex-wrap: wrap;
 	margin: 10px;
 	box-shadow: 0 14px 30px rgba(1, 1, 1, 0.1);
 	border-radius: 4px;
 	padding: 4px;
 	vertical-align: middle;
     text-align: center;
+	overflow-wrap: break-word;
+}
+.character .ownerList {
+	position:absolute;
+	align-self: flex-end;
+	display:flex;
+	flex-wrap: wrap;
+	width: 108px;
+	flex-direction: row-reverse;
+}
+.character .owner{
+	position:relative;
+	border-radius: 25px;
+	width:25px;
+	height: 25px;
+	margin: 2.5px;
+	border: 7.5px solid black;
+}
+div[data-index='0']{
+	background:blue;
+}
+
+div[data-index='1']{
+	background:red;
+}
+div[data-index='2']{
+	background:yellow;
 }
 .black .character{
 	background-color: #151515;
 }
 .black .character a{
+	color: #eee;
+}
+
+.gray .character{
+	background-color: black;
+}
+.gray .character a{
 	color: #eee;
 }
 .character.owned{
@@ -27,6 +78,9 @@ html.black, body.black{
 .character img {
 	height: 150px;
 	margin: 4px;
+}
+.character p {
+	max-width: 108px;
 }
 .small {
 	display: flex;
@@ -41,4 +95,9 @@ html.black, body.black{
 }
 img, a {
 	object-fit: cover;
+}
+
+#compareWith{
+	position:fixed;
+	left:0
 }
