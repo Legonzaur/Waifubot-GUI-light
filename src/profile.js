@@ -3,7 +3,7 @@ const list = document.getElementById("list");
 const sortElement = document.getElementById("sort");
 const searchInput = document.getElementById("searchInput");
 const parameters = new URLSearchParams(window.location.search.substring(1));
-var amount = 1000;
+var amount = 25;
 var user = {};
 var compareUsers = []
 var inventoryToShow = [];
@@ -39,7 +39,8 @@ Promise.all(userDatas).then(e => {
 	//sort and filter stuff
 	filteredInventory = filter(user.Waifus, parameters.get("filter") || "");
     inventoryToShow = sort(filteredInventory, parameters.get("sort"));
-	while (document.body.scrollHeight < window.innerHeight * 2 && inventoryToShow.length != 0) {
+	while (document.body.scrollHeight < window.innerHeight && inventoryToShow.length != 0) {
+		console.log(document.body.scrollHeight, window.innerHeight * 2)
 		batchAddCards(inventoryToShow);
 	}
 });
