@@ -19,23 +19,26 @@ const userDatas = [fetch("https://waifubot.kar.wtf/user/" + parameters.get("user
 
 if (parameters.get("compare")?.split(",")) {
 	parameters.get("compare")?.split(",").forEach(e => {
-		userDatas.push(fetch("https://waifubot.kar.wtf/user/" + parameters.get(e)).then((r) => r.json()));
+		userDatas.push(fetch("https://waifubot.kar.wtf/user/" + e).then((r) => r.json()));
 	})
 }
 
 Promise.all(userDatas).then(e => {
+	console.log(e)
 	user = e.shift();
 	//compare stuff
 	user.ID = parameters.get("user");
-	let compareWith = document.getElementById("compareWith");
+	
+	/*let compareWith = document.getElementById("compareWith");
 	e.forEach((compareUser, index) => {
+		
 		compareUser.ID = parameters.get("compare").split(",")[index];
 		compareUsers.push(compareUser)
 		let userID = document.createElement("div");
 		userID.dataset.index = index;
 		userID.innerText = compareUser.ID;
 		compareWith.appendChild(userID)
-	})
+	})*/
 	//sort and filter stuff
 	filteredInventory = filter(user.Waifus, parameters.get("filter") || "");
     inventoryToShow = sort(filteredInventory, parameters.get("sort"));
@@ -65,7 +68,7 @@ function batchAddCards(waifuList) {
     waifuName.innerText = waifu.Name;
     card.className = "character small";
 
-	let owners = document.createElement("div")
+	/*let owners = document.createElement("div")
 	owners.className = "ownerList"
 	compare(waifu, compareUsers).forEach((user) => {
 		let owner = document.createElement("div");
@@ -75,7 +78,7 @@ function batchAddCards(waifuList) {
 	})
 	card.appendChild(owners);
     cards.appendChild(card);
-    list.appendChild(cards);
+    list.appendChild(cards);*/
   });
 }
 
