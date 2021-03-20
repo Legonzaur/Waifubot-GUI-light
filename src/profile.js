@@ -3,12 +3,13 @@ const list = document.getElementById("list");
 const sortElement = document.getElementById("sort");
 const searchInput = document.getElementById("searchInput");
 const parameters = new URLSearchParams(window.location.search.substring(1));
-var amount = parameters.get("amount") || 25;
+var amount = Number(parameters.get("amount")) || 25;
 var user = {};
 var compareUsers = []
 var inventoryToShow = [];
 var filteredInventory = [];
 
+console.log(amount)
 //theme parameter
 //options : black, white or gray
 document.documentElement.className = parameters.get("theme") ?? "black";
@@ -42,8 +43,8 @@ Promise.all(userDatas).then(e => {
 	//sort and filter stuff
 	filteredInventory = filter(user.Waifus, parameters.get("filter") || "");
     inventoryToShow = sort(filteredInventory, parameters.get("sort"));
-	while (document.body.scrollHeight < window.innerHeight * 2 && inventoryToShow.length != 0) {
-		console.log(document.body.scrollHeight, window.innerHeight * 2)
+	while (document.body.scrollHeight < window.innerHeight && inventoryToShow.length != 0) {
+		console.log(document.body.scrollHeight, window.innerHeight)
 		batchAddCards(inventoryToShow);
 	}
 });

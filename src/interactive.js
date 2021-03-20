@@ -7,7 +7,7 @@ searchInput.disabled = false;
 
 function positionChange() {
   if (scrollLimit.getBoundingClientRect().top < window.innerHeight * 2) {
-    while (window.scrollMaxY - window.scrollY < window.screen.height) {
+    while (window.scrollMaxY - window.scrollY < window.screen.height && inventoryToShow != 0) {
       batchAddCards(inventoryToShow);
     }
   }
