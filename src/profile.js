@@ -3,7 +3,7 @@ const list = document.getElementById("list");
 const sortElement = document.getElementById("sort");
 const searchInput = document.getElementById("searchInput");
 const parameters = new URLSearchParams(window.location.search.substring(1));
-var amount = 25;
+var amount = parameters.get("amount") || 25;
 var user = {};
 var compareUsers = []
 var inventoryToShow = [];
@@ -76,9 +76,9 @@ function batchAddCards(waifuList) {
 		owner.dataset.index = compareUsers.indexOf(user);
 		owners.appendChild(owner);
 	})
-	card.appendChild(owners);
+	card.appendChild(owners);*/
     cards.appendChild(card);
-    list.appendChild(cards);*/
+    list.appendChild(cards);
   });
 }
 
