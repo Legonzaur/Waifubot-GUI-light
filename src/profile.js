@@ -39,7 +39,7 @@ Promise.all(userDatas).then(e => {
 	//sort and filter stuff
 	filteredInventory = filter(user.Waifus, parameters.get("filter") || "");
     inventoryToShow = sort(filteredInventory, parameters.get("sort"));
-	while (document.body.scrollHeight < window.innerHeight && inventoryToShow.length != 0) {
+	while (document.body.scrollHeight < window.innerHeight * 2 && inventoryToShow.length != 0) {
 		console.log(document.body.scrollHeight, window.innerHeight * 2)
 		batchAddCards(inventoryToShow);
 	}
