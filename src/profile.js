@@ -42,7 +42,7 @@ Promise.all(userDatas).then(e => {
 	})
 	//sort and filter stuff
 	filteredInventory = filter(user.Waifus, parameters.get("filter") || "");
-    inventoryToShow = sort(filteredInventory, parameters.get("sort"));
+    inventoryToShow = sort(filteredInventory, parameters.get("sort"), parameters.get("reversed"));
 	while (document.body.scrollHeight < window.innerHeight && inventoryToShow.length != 0) {
 		console.log(document.body.scrollHeight, window.innerHeight)
 		batchAddCards(inventoryToShow);
@@ -95,17 +95,32 @@ function filter(list, input) {
 }
 
 function sort(list, input) {
-  sortElement.value = input;
-
-  switch (input) {
-    case "ID":
+  let maps = {
+    ID: ()=>{
       list.sort((a, b) => a.ID - b.ID);
-      break;
-    case "Name":
+    },
+    Name: ()=>{
       list.sort((a, b) =>
-        a.Name.localeCompare(b.Name, "fr", { ignorePunctuation: true })
-      );
-  }
+      a.Name.localeCompare(b.Name, "fr", { ignorePunctuation: true })
+    );
+    },
+    Date : ()=>{
+
+    },
+    Date_Reversed: ()=>{
+      maps.Date();
+      list = list.reverse()
+    },
+    Name_Reversed: ()=>{
+      maps.Name();
+      list = list.reverse()
+    },
+    ID_Reversed: ()=>{
+      maps.ID();
+      list = list.reverse();
+    }
+  };
+  (maps[input] || maps.Date)();
   return list;
 }
 
