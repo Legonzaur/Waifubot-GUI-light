@@ -66,7 +66,8 @@ window.addEventListener(
     sortElement.value = targetParams.get("sort") ?? "Date";
     sort(filteredInventory, sortElement.value);
 
-    batchAddCards(inventoryToShow);
+    reloadAll();
+    //batchAddCards(inventoryToShow);
   },
   false
 );
