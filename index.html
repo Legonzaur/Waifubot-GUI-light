@@ -16,7 +16,15 @@
   </header>
   <main>
     <div>
-      <input type=text id="searchInput" placeholder="any uint or string" disabled></input>
+      <input type=text id="searchMediaInput" placeholder="Search a source" disabled></input>
+      <button id="searchMediaButton" disabled>Search</button>
+    </div>
+    <div id="compareWith"></div>
+
+    <div id="mediaList" class="list"></div>
+
+    <div>
+      <input type=text id="searchInput" placeholder="Search a waifu" disabled></input>
       <button id="searchButton" disabled>Search</button>
     </div>
     <div>
@@ -29,12 +37,7 @@
         <option value="Name">A-Z</option>
         <option value="Name_Reversed">Z-A</option>
       </select>
-
     </div>
-
-    <div id="compareWith"></div>
-
-
     <div id="list" class="small">
     </div>
     <div id="scrollLimit"></div>
@@ -42,6 +45,7 @@
   <footer>Created by Legonzaur#2100, Karitham#0577</footer>
   <script src="src/profile.js"></script>
   <script src="src/interactive.js"></script>
+  <script src="src/sourceSearch.js"></script>
 </body>
 
 </html>

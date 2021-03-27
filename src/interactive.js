@@ -1,9 +1,13 @@
-let searchButton = document.getElementById("searchButton");
-let scrollLimit = document.getElementById("scrollLimit");
+const searchButton = document.getElementById("searchButton");
+const searchMediaButton = document.getElementById("searchMediaButton");
+const scrollLimit = document.getElementById("scrollLimit");
 const url = new URL(window.location);
 sortElement.disabled = false;
 searchButton.disabled = false;
 searchInput.disabled = false;
+
+searchMediaButton.disabled = false;
+searchMediaInput.disabled = false;
 
 function positionChange() {
   if (scrollLimit.getBoundingClientRect().top < window.innerHeight * 2) {
@@ -43,6 +47,12 @@ searchInput.addEventListener("keyup", (e) => {
   }
 });
 
+searchMediaButton.addEventListener("click", ()=> {
+  if (searchMediaButton.disabled) return;
+  findAnimes(searchMediaInput.value)
+});
+
+
 window.addEventListener(
   "popstate",
   (e) => {
@@ -67,7 +77,6 @@ window.addEventListener(
     sort(filteredInventory, sortElement.value);
 
     reloadAll();
-    //batchAddCards(inventoryToShow);
   },
   false
 );

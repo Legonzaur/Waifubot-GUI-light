@@ -2,6 +2,7 @@ const main = document.querySelector("body main");
 const list = document.getElementById("list");
 const sortElement = document.getElementById("sort");
 const searchInput = document.getElementById("searchInput");
+const searchMediaInput = document.getElementById("searchMediaInput");
 const parameters = new URLSearchParams(window.location.search.substring(1));
 var amount = Number(parameters.get("amount")) || 25;
 var user = {};
@@ -24,8 +25,7 @@ if (parameters.get("compare")?.split(",")) {
 	})
 }
 
-Promise.all(userDatas).then(e => {
-	console.log(e)
+Promise.all(userDatas).then(async (e) => {
 	user = e.shift();
 	//compare stuff
 	user.ID = parameters.get("user");
@@ -49,25 +49,41 @@ Promise.all(userDatas).then(e => {
 	}
 });
 
-function batchAddCards(waifuList) {
+function batchAddCards(waifuList, listDIV = list) {
   let cards = document.createDocumentFragment();
   waifuList.splice(0, amount).forEach((waifu) => {
     let card = document.createElement("div");
     let link = document.createElement("a");
-    let img = document.createElement("img");
-    let waifuID = document.createElement("p");
+    let textContainer = document.createElement("div");
+    let waifuID
+    if(waifu.idEvent){
+      waifuID = document.createElement("button");
+      waifuID.addEventListener("click", waifu.idEvent)
+    }else{
+      waifuID = document.createElement("p");
+    }
+    
     let waifuName = document.createElement("p");
+    textContainer.appendChild(waifuID);
+    textContainer.appendChild(waifuName);
+    
 
     card.appendChild(link);
-    link.appendChild(img);
-    card.appendChild(waifuID);
-    card.appendChild(waifuName);
+    card.appendChild(textContainer);
 
-    link.setAttribute("href", "https://anilist.co/character/" + waifu.ID);
-    img.setAttribute("src", waifu.Image);
+    if(waifu.Image){
+      let img = document.createElement("img")
+      img.setAttribute("src", waifu.Image);
+      link.appendChild(img);
+    }
+    
+
+    link.setAttribute("href", waifu.link ? waifu.link : "https://anilist.co/character/" + waifu.ID);
+    
     waifuID.innerText = waifu.ID;
     waifuName.innerText = waifu.Name;
-    card.className = "character small";
+    card.className = "card small";
+    textContainer.className = "text"
 
 	let owners = document.createElement("div")
 	owners.className = "ownerList"
@@ -79,7 +95,7 @@ function batchAddCards(waifuList) {
 	})
 	card.appendChild(owners);
     cards.appendChild(card);
-    list.appendChild(cards);
+    listDIV.appendChild(cards);
   });
 }
 

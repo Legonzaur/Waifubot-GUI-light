@@ -1,103 +1,116 @@
 html {
-	background-color: rgb(237, 241, 245);
-	font-family: 'Montserrat', sans-serif;
+  background-color: rgb(237, 241, 245);
+  font-family: "Montserrat", sans-serif;
 }
 
-body{
-	text-align: center;
-	margin:40px auto;
-	max-width: 1150px;
-	min-width: 70%;
-	line-height:1.6;
-	font-size:1.125rem;
-	padding:0 10px;
-  }
-
-html.black, body.black{
-	background-color: black;
-    color: #eee;
+body {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 1150px;
+  min-width: 70%;
+  line-height: 1.6;
+  font-size: 1.125rem;
+  padding: 0 10px;
 }
 
-html.gray, body.gray{
-	background-color: #363636;
-    color: #eee;
-}
-.character {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 10px;
-	box-shadow: 0 14px 30px rgba(1, 1, 1, 0.1);
-	border-radius: 4px;
-	padding: 4px;
-	vertical-align: middle;
-    text-align: center;
-	overflow-wrap: break-word;
-}
-.character .ownerList {
-	position:absolute;
-	align-self: flex-end;
-	display:flex;
-	flex-wrap: wrap;
-	width: 108px;
-	flex-direction: row-reverse;
-}
-.character .owner{
-	position:relative;
-	border-radius: 25px;
-	width:25px;
-	height: 25px;
-	margin: 2.5px;
-	border: 7.5px solid black;
-}
-div[data-index='0']{
-	background:blue;
+html.black,
+body.black {
+  background-color: black;
+  color: #eee;
 }
 
-div[data-index='1']{
-	background:red;
+html.gray,
+body.gray {
+  background-color: #363636;
+  color: #eee;
 }
-div[data-index='2']{
-	background:yellow;
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  box-shadow: 0 14px 30px rgba(1, 1, 1, 0.1);
+  border-radius: 4px;
+  padding: 4px;
+  vertical-align: middle;
+  text-align: center;
+  overflow-wrap: break-word;
 }
-.black .character{
-	background-color: #151515;
+.card .ownerList {
+  position: absolute;
+  align-self: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  width: 108px;
+  flex-direction: row-reverse;
 }
-.black .character a{
-	color: #eee;
+.card .owner {
+  position: relative;
+  border-radius: 25px;
+  width: 25px;
+  height: 25px;
+  margin: 2.5px;
+  border: 7.5px solid black;
+}
+div[data-index="0"] {
+  background: blue;
 }
 
-.gray .character{
-	background-color: black;
+div[data-index="1"] {
+  background: red;
 }
-.gray .character a{
-	color: #eee;
+div[data-index="2"] {
+  background: yellow;
 }
-.character.owned{
-	background: rgb(76,76,76);
+.black .card {
+  background-color: #151515;
 }
-.character img {
-	height: 150px;
-	margin: 4px;
+.black .card a {
+  color: #eee;
 }
-.character p {
-	max-width: 108px;
+
+.gray .card {
+  background-color: black;
+}
+.gray .card a {
+  color: #eee;
+}
+.card.owned {
+  background: rgb(76, 76, 76);
+}
+.card img {
+  height: 150px;
+  margin: 4px;
+}
+.list .card {
+  justify-content: space-between;
+}
+.list .card .text {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  flex-grow: 2;
+}
+.list .card .text p {
+  margin: 0;
 }
 .small {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
-.small .character {
-	flex-direction: column;
-	width: 108px;
+.small .card {
+  flex-direction: column;
+  width: 108px;
 }
-.small .character img{
-	width: 100px;
+.small .card img {
+  width: 100px;
 }
-img, a {
-	object-fit: cover;
+img,
+a {
+  object-fit: cover;
 }
 
-#compareWith{
-	position:fixed;
-	left:0
+#compareWith {
+  position: fixed;
+  left: 0;
 }
